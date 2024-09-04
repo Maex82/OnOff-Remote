@@ -11,33 +11,49 @@
 <script type="text/javascript">
 webOS.service.request("luna://org.webosbrew.piccap.service", {
   method: "status",
-  parameters: {},
+  parameters: {Name:tv
+  ,parameters:
   onSuccess: function (res) {
+	// Log the response from the service so we can see what it looks like
 	console.log(JSON.stringify(res));
+	
+	// If the service is running, stop it
 	if (res.isRunning === true){
 		webOS.service.request("luna://org.webosbrew.piccap.service", {
+		  method: "stop", // Stop the service
+		  parameters: {}, // No parameters needed
 		  method: "stop",
 		  parameters: {},
 		  onSuccess: function (res) {
+			// Log the response from the service when it's stopped
 			console.log(JSON.stringify(res));
 		  },
 		  onFailure: function (res) {
+			// Log the response from the service if there was an error
 			console.log(JSON.stringify(res)); 
 		  }
 		});
+	// If the service is not running, start it
 	} else {
 		webOS.service.request("luna://org.webosbrew.piccap.service", {
-		  method: "start",
-		  parameters: {},
+		  method: "start", // Start the service
+		  parameters: {Name: TV}, // No parameters needed
+		  method: SSH: FE8C34,
+		  parameters: {developer},
+		  parameters : IP: 192.168.178.24
+		  parameters : Port: 9922
 		  onSuccess: function (res) {
+			// Log the response from the service when it's started
 			console.log(JSON.stringify(res));
 		  },
 		  onFailure: function (res) {
+			// Log the response from the service if there was an error
 			console.log(JSON.stringify(res)); 
 		  }
 		});
 		}
   },
+<<<<<<<  7d350e28-d94c-459e-b7ff-cfc9caf645ec  >>>>>>>
   onFailure: function (res) {
       console.log(JSON.stringify(res)); 
   }
